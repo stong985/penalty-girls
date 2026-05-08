@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>点球女郎 Penalty Girls</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main id="app" class="phone-shell">
+    <section id="landing" class="screen active">
+      <div class="bg bg-landing"></div>
+      <div class="shade"></div>
+      <header class="topbar">
+        <div class="logo">PENALTY<br><span>GIRLS</span></div>
+        <button class="ghost" data-action="gallery">收藏</button>
+      </header>
+      <div class="hero-copy">
+        <p class="eyebrow">竖屏点球挑战</p>
+        <h1>她能扑住<br>你的点球吗？</h1>
+        <p>3 次机会，进球越多，解锁越多女郎展示画面。</p>
+      </div>
+      <div class="cta-stack">
+        <button class="primary" data-action="start">开始挑战</button>
+        <button class="secondary" data-action="gallery">我的收藏</button>
+      </div>
+    </section>
+
+    <section id="start" class="screen">
+      <div class="bg bg-start"></div>
+      <div class="shade"></div>
+      <header class="topbar">
+        <button class="ghost" data-action="landing">返回</button>
+        <div class="pill">艾琳 · 邦女郎守门员</div>
+      </header>
+      <div class="rule-card glass">
+        <h2>挑战规则</h2>
+        <p>选择射门方向：左 / 中 / 右。</p>
+        <p>避开艾琳的扑救方向即可进球。</p>
+        <ul>
+          <li>进 1 球：解锁静态展示</li>
+          <li>进 2 球：解锁高级展示</li>
+          <li>进 3 球：解锁动态收藏</li>
+        </ul>
+        <button class="primary" data-action="game">进入球场</button>
+      </div>
+    </section>
+
+    <section id="game" class="screen">
+      <div class="stadium">
+        <div class="scorebar glass">
+          <span>回合 <b id="roundText">1/3</b></span>
+          <span>进球 <b id="scoreText">0</b></span>
+          <span>艾琳</span>
+        </div>
+        <div class="goal">
+          <div class="net"></div>
+          <div id="keeper" class="keeper idle"></div>
+          <div id="ball" class="ball"></div>
+          <div id="resultFlash" class="result-flash"></div>
+        </div>
+        <div class="field-lines"></div>
+      </div>
+      <div class="shoot-panel glass">
+        <p id="hintText">选择射门方向</p>
+        <div class="directions">
+          <button data-shot="left">左路</button>
+          <button data-shot="center">中路</button>
+          <button data-shot="right">右路</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="result" class="screen">
+      <div class="bg bg-result"></div>
+      <div class="shade"></div>
+      <div class="result-card glass">
+        <p class="eyebrow">挑战结束</p>
+        <h2 id="finalTitle">你进了 0 球</h2>
+        <p id="rewardText">再试一次，解锁她的展示画面。</p>
+        <div id="unlockedList" class="unlocked-list"></div>
+        <button class="primary" data-action="game">再挑战</button>
+        <button class="secondary" data-action="gallery">查看收藏</button>
+        <button class="ghost" data-action="landing">返回首页</button>
+      </div>
+    </section>
+
+    <section id="gallery" class="screen gallery-screen">
+      <header class="topbar solid">
+        <button class="ghost" data-action="landing">返回</button>
+        <div class="pill">我的收藏</div>
+      </header>
+      <div class="gallery-head">
+        <h2>艾琳</h2>
+        <p id="galleryProgress">静态 0/4 · 动态 0/2</p>
+      </div>
+      <div id="galleryGrid" class="gallery-grid"></div>
+    </section>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>
