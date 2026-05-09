@@ -83,16 +83,23 @@
 - `assets/girls/girl01/gallery/keeper-right-dive.jpg`
 - `assets/girls/girl01/gallery/keeper-victory.jpg`
 - `assets/girls/girl01/gallery/unlock-trophy-gold.jpg`
+- `assets/girls/girl01/gallery/unlock-locker-room.jpg`
+- `assets/girls/girl01/gallery/unlock-training.jpg`
+- `assets/girls/girl01/gallery/unlock-neon-card.jpg`
+- `assets/girls/girl01/gallery/unlock-red-kit.jpg`
+- `assets/girls/girl01/gallery/unlock-white-kit.jpg`
+- `assets/girls/girl01/gallery/unlock-rain-match.jpg`
+- `assets/girls/girl01/gallery/unlock-celebration.jpg`
 
-### 正在/计划补齐的素材组
+### 本轮素材数量
 
-- `unlock-locker-room.jpg`
-- `unlock-training.jpg`
-- `unlock-neon-card.jpg`
-- `unlock-red-kit.jpg`
-- `unlock-white-kit.jpg`
-- `unlock-rain-match.jpg`
-- `unlock-celebration.jpg`
+- 主图/缩略图：4 张。
+- 扩展图库：16 张。
+- 合计接入图片资源：20 张。
+
+### 生成源文件
+
+批量生成原图保存在本机：`~/.openclaw/generated/gpt-image/penalty-girls-batch/`。仓库中接入的是压缩后的 JPG/PNG，以控制 Pages 体积。
 
 ## 4. 生成 Prompt 方向
 

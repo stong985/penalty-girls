@@ -31,6 +31,9 @@ const galleryItems = [
   { id: 'unlock-training', type: '奖励', label: '训练场收藏', unlockScore: 3, thumb: './assets/girls/girl01/gallery/unlock-training.jpg', full: './assets/girls/girl01/gallery/unlock-training.jpg' },
   { id: 'unlock-neon-card', type: '奖励', label: '霓虹球员卡', unlockScore: 3, thumb: './assets/girls/girl01/gallery/unlock-neon-card.jpg', full: './assets/girls/girl01/gallery/unlock-neon-card.jpg' },
   { id: 'unlock-red-kit', type: '皮肤', label: '红色球衣', unlockScore: 3, thumb: './assets/girls/girl01/gallery/unlock-red-kit.jpg', full: './assets/girls/girl01/gallery/unlock-red-kit.jpg' },
+  { id: 'unlock-white-kit', type: '皮肤', label: '白金球衣', unlockScore: 3, thumb: './assets/girls/girl01/gallery/unlock-white-kit.jpg', full: './assets/girls/girl01/gallery/unlock-white-kit.jpg' },
+  { id: 'unlock-rain-match', type: '奖励', label: '雨夜比赛', unlockScore: 3, thumb: './assets/girls/girl01/gallery/unlock-rain-match.jpg', full: './assets/girls/girl01/gallery/unlock-rain-match.jpg' },
+  { id: 'unlock-celebration', type: '奖励', label: '胜利庆祝', unlockScore: 3, thumb: './assets/girls/girl01/gallery/unlock-celebration.jpg', full: './assets/girls/girl01/gallery/unlock-celebration.jpg' },
   { id: 'unlocked', type: '终极', label: '解锁奖励版', unlockScore: 3, thumb: './assets/girls/girl01/unlocked-thumb.jpg', full: './assets/girls/girl01/unlocked.png' },
 ];
 
