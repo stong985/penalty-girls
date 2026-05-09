@@ -16,9 +16,9 @@ button { font: inherit; color: inherit; border: 0; cursor: pointer; }
 .screen { position: absolute; inset: 0; display: none; overflow: hidden; }
 .screen.active { display: block; }
 .bg { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.02); }
-.bg-landing { background-image: url('./assets/girls/girl01/landing.svg'); }
-.bg-start { background-image: url('./assets/girls/girl01/idle.svg'); }
-.bg-result { background-image: url('./assets/girls/girl01/result.svg'); }
+.bg-landing { background-image: url('./assets/girls/girl01/free.png'); }
+.bg-start { background-image: url('./assets/girls/girl01/free.png'); }
+.bg-result { background-image: url('./assets/girls/girl01/unlocked.png'); }
 .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.1) 38%, rgba(0,0,0,.82)); }
 .topbar { position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: center; padding: max(18px, env(safe-area-inset-top)) 18px 0; }
 .topbar.solid { padding-bottom: 12px; background: linear-gradient(180deg, rgba(6,8,18,.94), rgba(6,8,18,.35)); }
@@ -65,8 +65,9 @@ p { line-height: 1.55; }
 .gallery-head { padding: 86px 18px 12px; }
 .gallery-head p { color: #cfc6bc; margin-top: -8px; }
 .gallery-grid { padding: 0 14px 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-.card { min-height: 190px; border-radius: 22px; overflow: hidden; position: relative; background: #181b28; border: 1px solid rgba(255,255,255,.12); }
+.card { min-height: 300px; border-radius: 22px; overflow: hidden; position: relative; background: #181b28; border: 1px solid rgba(255,255,255,.12); display: block; width: 100%; padding: 0; text-align: left; }
 .card .thumb { position: absolute; inset: 0; background-size: cover; background-position: center; }
 .card.locked .thumb { filter: grayscale(1) brightness(.35); }
-.card .label { position: absolute; left: 9px; right: 9px; bottom: 9px; padding: 8px; border-radius: 12px; background: rgba(0,0,0,.55); font-weight: 800; font-size: 13px; }
+.card.locked::after { content: '🔒'; position: absolute; inset: 0; display: grid; place-items: center; font-size: 42px; text-shadow: 0 4px 18px #000; }
+.card .label { position: absolute; left: 9px; right: 9px; bottom: 9px; padding: 8px; border-radius: 12px; background: rgba(0,0,0,.55); font-weight: 800; font-size: 13px; text-align: center; }
 @media (min-width: 700px) { .phone-shell { height: 920px; min-height: 920px; border-radius: 30px; margin: 20px 0; } }

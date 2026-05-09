@@ -2,6 +2,7 @@ const screens = [...document.querySelectorAll('.screen')];
 const keeper = document.getElementById('keeper');
 const ball = document.getElementById('ball');
 const resultFlash = document.getElementById('resultFlash');
+const resultBg = document.querySelector('#result .bg');
 const roundText = document.getElementById('roundText');
 const scoreText = document.getElementById('scoreText');
 const hintText = document.getElementById('hintText');
@@ -10,24 +11,35 @@ const rewardText = document.getElementById('rewardText');
 const unlockedList = document.getElementById('unlockedList');
 const galleryGrid = document.getElementById('galleryGrid');
 const galleryProgress = document.getElementById('galleryProgress');
+const galleryTitle = document.querySelector('.gallery-head h2');
+const galleryDesc = document.querySelector('.gallery-head p');
 
 const directions = ['left', 'center', 'right'];
 const saveKey = 'penaltyGirlsSave.v1';
 const galleryItems = [
-  { id: 'static-01', type: '静态', label: '登场海报', unlockScore: 1, thumb: './assets/girls/girl01/gallery/static-01.svg' },
-  { id: 'static-02', type: '静态', label: '守门姿态', unlockScore: 2, thumb: './assets/girls/girl01/gallery/static-02.svg' },
-  { id: 'static-03', type: '静态', label: '胜利展示', unlockScore: 3, thumb: './assets/girls/girl01/gallery/static-03.svg' },
-  { id: 'static-04', type: '静态', label: '训练后展示', unlockScore: 3, thumb: './assets/girls/girl01/gallery/static-04.svg' },
-  { id: 'video-01', type: '动态', label: '登场动态', unlockScore: 3, thumb: './assets/girls/girl01/gallery/video-01.svg' },
-  { id: 'video-02', type: '动态', label: '扑救动态', unlockScore: 4, thumb: './assets/girls/girl01/gallery/video-02.svg' },
+  { id: 'free', type: '首屏', label: '免费替换版', unlockScore: 0, thumb: './assets/girls/girl01/free-thumb.jpg', full: './assets/girls/girl01/free.png' },
+  { id: 'hero-stadium-host', type: '落地页', label: '赛事预测官', unlockScore: 0, thumb: './assets/girls/girl01/gallery/hero-stadium-host.jpg', full: './assets/girls/girl01/gallery/hero-stadium-host.jpg' },
+  { id: 'hero-goalkeeper-free', type: '落地页', label: '守门员海报', unlockScore: 1, thumb: './assets/girls/girl01/gallery/hero-goalkeeper-free.jpg', full: './assets/girls/girl01/gallery/hero-goalkeeper-free.jpg' },
+  { id: 'hero-fan-girl', type: '落地页', label: '球衣女粉', unlockScore: 1, thumb: './assets/girls/girl01/gallery/hero-fan-girl.jpg', full: './assets/girls/girl01/gallery/hero-fan-girl.jpg' },
+  { id: 'hero-black-gold-vip', type: '高级', label: '黑金主持', unlockScore: 1, thumb: './assets/girls/girl01/gallery/hero-black-gold-vip.jpg', full: './assets/girls/girl01/gallery/hero-black-gold-vip.jpg' },
+  { id: 'keeper-idle', type: '角色', label: '守门待机', unlockScore: 2, thumb: './assets/girls/girl01/gallery/keeper-idle.jpg', full: './assets/girls/girl01/gallery/keeper-idle.jpg' },
+  { id: 'keeper-left-dive', type: '角色', label: '左扑动态', unlockScore: 2, thumb: './assets/girls/girl01/gallery/keeper-left-dive.jpg', full: './assets/girls/girl01/gallery/keeper-left-dive.jpg' },
+  { id: 'keeper-right-dive', type: '角色', label: '右扑动态', unlockScore: 2, thumb: './assets/girls/girl01/gallery/keeper-right-dive.jpg', full: './assets/girls/girl01/gallery/keeper-right-dive.jpg' },
+  { id: 'keeper-victory', type: '角色', label: '扑救胜利', unlockScore: 2, thumb: './assets/girls/girl01/gallery/keeper-victory.jpg', full: './assets/girls/girl01/gallery/keeper-victory.jpg' },
+  { id: 'unlock-trophy-gold', type: '奖励', label: '金杯奖励', unlockScore: 3, thumb: './assets/girls/girl01/gallery/unlock-trophy-gold.jpg', full: './assets/girls/girl01/gallery/unlock-trophy-gold.jpg' },
+  { id: 'unlock-locker-room', type: '奖励', label: '更衣室收藏', unlockScore: 3, thumb: './assets/girls/girl01/gallery/unlock-locker-room.jpg', full: './assets/girls/girl01/gallery/unlock-locker-room.jpg' },
+  { id: 'unlock-training', type: '奖励', label: '训练场收藏', unlockScore: 3, thumb: './assets/girls/girl01/gallery/unlock-training.jpg', full: './assets/girls/girl01/gallery/unlock-training.jpg' },
+  { id: 'unlock-neon-card', type: '奖励', label: '霓虹球员卡', unlockScore: 3, thumb: './assets/girls/girl01/gallery/unlock-neon-card.jpg', full: './assets/girls/girl01/gallery/unlock-neon-card.jpg' },
+  { id: 'unlock-red-kit', type: '皮肤', label: '红色球衣', unlockScore: 3, thumb: './assets/girls/girl01/gallery/unlock-red-kit.jpg', full: './assets/girls/girl01/gallery/unlock-red-kit.jpg' },
+  { id: 'unlocked', type: '终极', label: '解锁奖励版', unlockScore: 3, thumb: './assets/girls/girl01/unlocked-thumb.jpg', full: './assets/girls/girl01/unlocked.png' },
 ];
 
 let state = { round: 1, score: 0, locked: false };
 let save = loadSave();
 
 function loadSave() {
-  try { return JSON.parse(localStorage.getItem(saveKey)) || { unlocked: ['static-01'] }; }
-  catch { return { unlocked: ['static-01'] }; }
+  try { return JSON.parse(localStorage.getItem(saveKey)) || { unlocked: ['free', 'hero-stadium-host'] }; }
+  catch { return { unlocked: ['free', 'hero-stadium-host'] }; }
 }
 function persist() { localStorage.setItem(saveKey, JSON.stringify(save)); }
 function show(id) {
@@ -89,8 +101,13 @@ function flash(text, isGoal) {
   resultFlash.textContent = text;
   resultFlash.className = `result-flash ${text ? 'show' : ''} ${isGoal ? 'goal-text' : 'save-text'}`;
 }
+function setResultBackground(url) {
+  if (resultBg) resultBg.style.backgroundImage = `url('${url}')`;
+}
 function endGame() {
   unlockRewards(state.score);
+  const best = [...galleryItems].reverse().find(item => item.unlockScore <= state.score);
+  setResultBackground(best?.full || './assets/girls/girl01/free.png');
   finalTitle.textContent = `你进了 ${state.score} / 3 球`;
   const lines = ['她笑了：再练练吧。', '还算有点准头，给你一点奖励。', '不错，她开始认真了。', '这球……算你赢。'];
   rewardText.textContent = lines[state.score];
@@ -107,25 +124,42 @@ function unlockRewards(score) {
 }
 function renderGallery() {
   const unlocked = new Set(save.unlocked || []);
-  const imageTotal = galleryItems.filter(i => i.type === '静态').length;
-  const videoTotal = galleryItems.filter(i => i.type === '动态').length;
-  const imageCount = galleryItems.filter(i => i.type === '静态' && unlocked.has(i.id)).length;
-  const videoCount = galleryItems.filter(i => i.type === '动态' && unlocked.has(i.id)).length;
-  galleryProgress.textContent = `静态 ${imageCount}/${imageTotal} · 动态 ${videoCount}/${videoTotal}`;
+  const imageTotal = galleryItems.length;
+  const imageCount = galleryItems.filter(i => unlocked.has(i.id)).length;
+  galleryProgress.textContent = `已解锁 ${imageCount}/${imageTotal}`;
+  galleryTitle.textContent = '艾琳 · 女郎收藏';
+  galleryDesc.textContent = '免费首屏 + 落地页素材 + 通关奖励图，进球越多开放越多。';
   galleryGrid.innerHTML = galleryItems.map(item => {
     const open = unlocked.has(item.id);
-    return `<div class="card ${open ? '' : 'locked'}">
+    return `<button class="card ${open ? '' : 'locked'}" data-open="${item.id}">
       <div class="thumb" style="background-image:url('${item.thumb}')"></div>
-      <div class="label">${open ? item.type + ' · ' + item.label : '未解锁'}</div>
-    </div>`;
+      <div class="label">${open ? item.type + ' · ' + item.label : `未解锁 · ${item.unlockScore}球`}</div>
+    </button>`;
   }).join('');
+}
+function openGalleryItem(id) {
+  const item = galleryItems.find(i => i.id === id);
+  if (!item) return;
+  const unlocked = new Set(save.unlocked || []);
+  if (!unlocked.has(id)) {
+    hintText.textContent = '先完成挑战再解锁她';
+    show('game');
+    return;
+  }
+  setResultBackground(item.full);
+  finalTitle.textContent = item.label;
+  rewardText.textContent = `${item.type}素材 · ${item.label}`;
+  unlockedList.innerHTML = `<div>${item.label}</div>`;
+  show('result');
 }
 
 document.addEventListener('click', e => {
   const action = e.target.closest('[data-action]')?.dataset.action;
   const shot = e.target.closest('[data-shot]')?.dataset.shot;
+  const open = e.target.closest('[data-open]')?.dataset.open;
   if (action) show(action);
   if (shot) shoot(shot);
+  if (open) openGalleryItem(open);
 });
 
 renderGallery();
