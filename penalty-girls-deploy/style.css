@@ -1,0 +1,73 @@
+:root {
+  --gold: #ffd36a;
+  --gold2: #b67a1f;
+  --pink: #ff5fa2;
+  --blue: #60d8ff;
+  --dark: #080912;
+  --panel: rgba(10, 12, 24, .64);
+  --line: rgba(255, 211, 106, .42);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; min-height: 100%; background: #05060b; color: #fff; }
+body { display: grid; place-items: center; overflow-x: hidden; }
+button { font: inherit; color: inherit; border: 0; cursor: pointer; }
+.phone-shell { position: relative; width: min(100vw, 440px); height: 100dvh; min-height: 720px; overflow: hidden; background: #090912; box-shadow: 0 0 80px rgba(0,0,0,.6); }
+.screen { position: absolute; inset: 0; display: none; overflow: hidden; }
+.screen.active { display: block; }
+.bg { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.02); }
+.bg-landing { background-image: url('./assets/girls/girl01/free.png'); }
+.bg-start { background-image: url('./assets/girls/girl01/free.png'); }
+.bg-result { background-image: url('./assets/girls/girl01/unlocked.png'); }
+.shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.1) 38%, rgba(0,0,0,.82)); }
+.topbar { position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: center; padding: max(18px, env(safe-area-inset-top)) 18px 0; }
+.topbar.solid { padding-bottom: 12px; background: linear-gradient(180deg, rgba(6,8,18,.94), rgba(6,8,18,.35)); }
+.logo { line-height: .86; letter-spacing: .08em; font-weight: 900; font-size: 26px; text-shadow: 0 2px 14px #000; }
+.logo span { color: var(--gold); }
+.pill, .ghost { border: 1px solid var(--line); background: rgba(0,0,0,.35); border-radius: 999px; padding: 9px 12px; backdrop-filter: blur(10px); }
+.hero-copy { position: absolute; z-index: 2; left: 22px; right: 22px; bottom: 154px; text-shadow: 0 2px 16px #000; }
+.eyebrow { margin: 0 0 8px; color: var(--gold); letter-spacing: .18em; font-size: 12px; font-weight: 800; }
+h1 { margin: 0; font-size: 48px; line-height: .98; }
+h2 { margin: 0 0 12px; font-size: 31px; }
+p { line-height: 1.55; }
+.cta-stack { position: absolute; z-index: 3; left: 20px; right: 20px; bottom: 28px; display: grid; gap: 10px; }
+.primary, .secondary { min-height: 54px; border-radius: 18px; font-weight: 900; letter-spacing: .08em; }
+.primary { color: #17100a; background: linear-gradient(135deg, #ffe89a, #ffbd42 48%, #ff5fa2); box-shadow: 0 12px 34px rgba(255, 121, 73, .3); }
+.secondary { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); }
+.glass { border: 1px solid var(--line); background: var(--panel); box-shadow: 0 20px 50px rgba(0,0,0,.4); backdrop-filter: blur(16px); }
+.rule-card { position: absolute; z-index: 3; left: 20px; right: 20px; bottom: 26px; padding: 20px; border-radius: 26px; }
+.rule-card ul { padding-left: 20px; color: #f6e7cf; }
+.stadium { position: absolute; inset: 0; background: radial-gradient(circle at 50% 34%, #244151, #0c1725 46%, #081018 78%); }
+.stadium::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(104,216,255,.22), transparent 34%), radial-gradient(circle at 20% 20%, rgba(255,211,106,.25), transparent 22%), radial-gradient(circle at 80% 22%, rgba(255,95,162,.24), transparent 22%); }
+.scorebar { position: relative; z-index: 4; margin: max(20px, env(safe-area-inset-top)) 14px 0; border-radius: 18px; padding: 12px; display: flex; justify-content: space-between; }
+.goal { position: absolute; z-index: 2; top: 94px; left: 22px; right: 22px; height: 420px; border: 5px solid rgba(255,255,255,.86); border-bottom: 0; border-radius: 14px 14px 0 0; box-shadow: inset 0 0 40px rgba(96,216,255,.14), 0 0 30px rgba(255,255,255,.12); }
+.net { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px); background-size: 30px 30px; }
+.keeper { position: absolute; z-index: 3; width: 210px; height: 360px; left: calc(50% - 105px); bottom: -8px; background: url('./assets/girls/girl01/keeper.svg') center bottom/contain no-repeat; transition: transform .42s cubic-bezier(.2,.9,.2,1), filter .25s; filter: drop-shadow(0 12px 18px rgba(0,0,0,.55)); }
+.keeper.left { transform: translateX(-88px) rotate(-18deg); }
+.keeper.center { transform: translateY(-28px) scale(1.04); }
+.keeper.right { transform: translateX(88px) rotate(18deg); }
+.ball { position: absolute; z-index: 5; width: 54px; height: 54px; left: calc(50% - 27px); bottom: -178px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, #dce4eb 55%, #111 56%, #111 62%, #f7f7f7 63%); box-shadow: 0 12px 22px rgba(0,0,0,.45); transition: transform .62s cubic-bezier(.18,.8,.16,1), opacity .2s; }
+.ball.left { transform: translate(-122px, -346px) scale(.62); }
+.ball.center { transform: translate(0, -368px) scale(.58); }
+.ball.right { transform: translate(122px, -346px) scale(.62); }
+.result-flash { position: absolute; z-index: 7; left: 0; right: 0; top: 45%; text-align: center; font-size: 42px; font-weight: 1000; text-shadow: 0 4px 24px #000; opacity: 0; transform: scale(.8); transition: .25s; }
+.result-flash.show { opacity: 1; transform: scale(1); }
+.result-flash.goal-text { color: #7cffb2; }
+.result-flash.save-text { color: #ff6f94; }
+.field-lines { position: absolute; left: -20%; right: -20%; bottom: -80px; height: 280px; border-top: 3px solid rgba(255,255,255,.28); border-radius: 50%; transform: perspective(300px) rotateX(58deg); }
+.shoot-panel { position: absolute; z-index: 8; left: 14px; right: 14px; bottom: 18px; padding: 14px; border-radius: 24px; text-align: center; }
+.shoot-panel p { margin: 0 0 10px; color: #f7e4be; }
+.directions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+.directions button { min-height: 54px; border-radius: 16px; background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.08)); border: 1px solid rgba(255,255,255,.24); font-weight: 900; }
+.result-card { position: absolute; z-index: 4; left: 20px; right: 20px; bottom: 22px; padding: 20px; border-radius: 28px; display: grid; gap: 10px; }
+.unlocked-list { display: grid; gap: 8px; color: #ffe8b0; }
+.gallery-screen { background: linear-gradient(180deg, #101322, #05060b); overflow-y: auto; }
+.gallery-head { padding: 86px 18px 12px; }
+.gallery-head p { color: #cfc6bc; margin-top: -8px; }
+.gallery-grid { padding: 0 14px 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.card { min-height: 300px; border-radius: 22px; overflow: hidden; position: relative; background: #181b28; border: 1px solid rgba(255,255,255,.12); display: block; width: 100%; padding: 0; text-align: left; }
+.card .thumb { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.card.locked .thumb { filter: grayscale(1) brightness(.35); }
+.card.locked::after { content: '🔒'; position: absolute; inset: 0; display: grid; place-items: center; font-size: 42px; text-shadow: 0 4px 18px #000; }
+.card .label { position: absolute; left: 9px; right: 9px; bottom: 9px; padding: 8px; border-radius: 12px; background: rgba(0,0,0,.55); font-weight: 800; font-size: 13px; text-align: center; }
+@media (min-width: 700px) { .phone-shell { height: 920px; min-height: 920px; border-radius: 30px; margin: 20px 0; } }
